@@ -1,9 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../slice/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -15,6 +20,8 @@ const Login = () => {
         },
         { withCredentials: true }
       );
+      dispatch(addUser(res.data));
+      navigate("/");
     } catch (err) {
       console.error(err);
     }
