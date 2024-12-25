@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import UserCard from "../UserCard/UserCard";
 import axios from "axios";
 import { BASE_URL } from "../../constants/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../slice/userSlice";
-import CustomToast from "../CustomToast/CustomToast";
+import CustomToast from "../Common/CustomToast";
+import UserCard from "../Common/UserCard";
 const INIT_PROFILE_STATE = {
   firstName: "",
   lastName: "",
