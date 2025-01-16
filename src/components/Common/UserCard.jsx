@@ -1,7 +1,7 @@
 import React from "react";
 
-const UserCard = ({ user }) => {
-  const { firstName, lastName, age, about, gender, photoUrl } = user;
+const UserCard = ({ user, handleFeedRequest }) => {
+  const { _id, firstName, lastName, age, about, gender, photoUrl } = user;
   return (
     <div className="card bg-base-300 w-96 h-1/3 shadow-xl">
       <figure>
@@ -12,8 +12,18 @@ const UserCard = ({ user }) => {
         {age && gender && <p>{`${age} ${gender}`}</p>}
         <p>{about}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Ignore</button>
-          <button className="btn btn-secondary">Interested</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => handleFeedRequest("ignored", _id)}
+          >
+            Ignore
+          </button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => handleFeedRequest("interested", _id)}
+          >
+            Interested
+          </button>
         </div>
       </div>
     </div>

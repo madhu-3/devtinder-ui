@@ -23,11 +23,36 @@ const Requests = () => {
   useEffect(() => {
     fetchRequests();
   }, []);
+
+  const handleConnectionRequest = async (type, id) => {
+    try {
+      const res = await axios.post(
+        `${BASE_URL}/request/review/${type}/${id}`,
+        {},
+        { withCredentials: true }
+      );
+      console.log(res);
+      fetchRequests();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  if (userRequests.length === 0) {
+    return <div className="text-center">No Requests</div>;
+  }
+
   return (
     userRequests && (
       <div className="flex flex-col items-center gap-y-4 my-2">
         {userRequests.map((item) => {
-          return <ListCard key={item._id} user={item.fromUserId} />;
+          return (
+            <ListCard
+              key={item._id}
+              user={item.fromUserId}
+              handleConnectionRequest={handleConnectionRequest}
+              requestId={item._id}
+            />
+          );
         })}
       </div>
     )

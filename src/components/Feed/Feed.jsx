@@ -21,11 +21,28 @@ const Feed = () => {
   useEffect(() => {
     fetchFeed();
   }, []);
+
+  const handleFeedRequest = async (type, id) => {
+    try {
+      const res = await axios.post(
+        `${BASE_URL}/request/send/${type}/${id}`,
+        {},
+        { withCredentials: true }
+      );
+      console.log(res);
+      fetchFeed();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  if (!userFeed || userFeed?.length === 0) {
+    return <div>Waiting for more users</div>;
+  }
   return (
     userFeed && (
       <div className="flex items-center my-10 flex-col gap-y-10">
         {userFeed.map((user) => {
-          return <UserCard user={user} />;
+          return <UserCard user={user} handleFeedRequest={handleFeedRequest} />;
         })}
       </div>
     )

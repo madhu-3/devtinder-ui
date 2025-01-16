@@ -4,6 +4,7 @@ import { BASE_URL } from "../../constants/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../../slice/connectionsSlice";
 import ListCard from "../Common/ListCard";
+import NoConnections from "../NoConnections/NoConnections";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,10 @@ const Connections = () => {
   useEffect(() => {
     fetchConnections();
   }, []);
+
+  if (userConnections.length === 0) {
+    return <NoConnections />;
+  }
   return (
     userConnections && (
       <div className="flex flex-col items-center gap-y-4 my-2">
