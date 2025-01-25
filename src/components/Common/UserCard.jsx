@@ -1,11 +1,28 @@
 import React from "react";
+import { BASE_URL } from "../../constants/constants";
+import defaultImg from "../../assets/defaultImg.jpeg";
 
-const UserCard = ({ user, handleFeedRequest }) => {
+const UserCard = ({
+  user,
+  handleFeedRequest = () => {},
+  preview,
+  isProfileView = false,
+}) => {
   const { _id, firstName, lastName, age, about, gender, photoUrl } = user;
+  console.log("preview", preview);
   return (
     <div className="card bg-base-300 w-96 h-1/3 shadow-xl">
       <figure>
-        <img src={photoUrl} alt="feed user photo" />
+        <img
+          src={
+            isProfileView
+              ? preview
+              : photoUrl
+              ? BASE_URL + photoUrl
+              : defaultImg
+          }
+          alt="feed user photo"
+        />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{firstName + " " + lastName}</h2>

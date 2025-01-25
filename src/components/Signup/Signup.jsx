@@ -18,7 +18,6 @@ const Signup = () => {
       age: "",
       gender: "",
       about: "",
-      photoUrl: "",
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -33,7 +32,6 @@ const Signup = () => {
         .required("Email must not be empty"),
       age: Yup.number().min(18, "You must be atleast 18 years old"),
       gender: Yup.string().required("Please Choose Gender"),
-      photoUrl: Yup.string().url("Please enter Valid URL"),
       password: Yup.string().required("Password must not be empty"),
     }),
     onSubmit: (values) => {
@@ -209,27 +207,6 @@ const Signup = () => {
               <div className="label">
                 <span className="label-text text-red-600">
                   {formik.errors.about}{" "}
-                </span>
-              </div>
-            ) : null}
-          </label>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Photo URL: </span>
-            </div>
-            <input
-              type="text"
-              id="photoUrl"
-              name="photoUrl"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.photoUrl}
-              className="input input-bordered w-full max-w-xs"
-            />
-            {formik.touched.photoUrl && formik.errors.photoUrl ? (
-              <div className="label">
-                <span className="label-text text-red-600">
-                  {formik.errors.photoUrl}{" "}
                 </span>
               </div>
             ) : null}

@@ -1,4 +1,14 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleCheck,
+  faEnvelope,
+  faMessage,
+  faSquareCheck,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
+import { BASE_URL } from "../../constants/constants";
+import defaultImg from "../../assets/defaultImg.jpeg";
 
 const ListCard = ({
   user,
@@ -8,10 +18,10 @@ const ListCard = ({
 }) => {
   const { firstName, lastName, age, about, gender, photoUrl } = user;
   return (
-    <div className="w-1/2 h-28 bg-base-300 shadow-xl rounded-lg flex justify-between p-2 gap-x-4 items-center">
+    <div className="w-full lg:w-3/4 bg-base-300 shadow-xl rounded-lg flex justify-between p-2 gap-x-4 items-center">
       <img
         className="w-20 h-20 rounded-full"
-        src={photoUrl}
+        src={photoUrl ? BASE_URL + photoUrl : defaultImg}
         alt="user badge photo"
       />
       <div className="grow">
@@ -21,25 +31,44 @@ const ListCard = ({
       </div>
       {isConnection ? (
         <div>
-          <button className="btn btn-primary" disabled>
+          <button className="btn btn-primary hidden sm:block" disabled>
             Message
           </button>
+          <div className="sm:hidden text-secondary">
+            <FontAwesomeIcon icon={faMessage} size="xl" />
+          </div>
         </div>
       ) : (
-        <div className="flex gap-1">
-          <button
-            className="btn btn-primary"
-            onClick={() => handleConnectionRequest("accepted", requestId)}
-          >
-            Accept
-          </button>
-          <button
-            className="btn btn-secondary"
-            onClick={() => handleConnectionRequest("rejected", requestId)}
-          >
-            Reject
-          </button>
-        </div>
+        <>
+          <div className="hidden sm:flex gap-1">
+            <button
+              className="btn btn-primary"
+              onClick={() => handleConnectionRequest("accepted", requestId)}
+            >
+              Accept
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => handleConnectionRequest("rejected", requestId)}
+            >
+              Reject
+            </button>
+          </div>
+          <div className="flex gap-1 sm:hidden">
+            <span
+              className="text-primary"
+              onClick={() => handleConnectionRequest("accepted", requestId)}
+            >
+              <FontAwesomeIcon icon={faCircleCheck} size="2xl" />
+            </span>
+            <span
+              className="text-secondary"
+              onClick={() => handleConnectionRequest("rejected", requestId)}
+            >
+              <FontAwesomeIcon icon={faXmark} size="2xl" />
+            </span>
+          </div>
+        </>
       )}
     </div>
   );

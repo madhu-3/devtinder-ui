@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logout from "../Logout/Logout";
+import { BASE_URL } from "../../constants/constants";
+import defaultImg from "../../assets/defaultImg.jpeg";
 
 const Navbar = () => {
   const userData = useSelector((store) => store.user.userData);
@@ -23,7 +25,14 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img alt="UserImage" src={userData.photoUrl} />
+                <img
+                  alt="UserImage"
+                  src={
+                    userData.photoUrl
+                      ? BASE_URL + userData.photoUrl
+                      : defaultImg
+                  }
+                />
               </div>
             </div>
             <ul
