@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logout from "../Logout/Logout";
 import { BASE_URL } from "../../constants/constants";
 import defaultImg from "../../assets/defaultImg.jpeg";
+import devlogo from "../../assets/Devtinderlogo.jpeg";
 
 const Navbar = () => {
   const userData = useSelector((store) => store.user.userData);
@@ -11,6 +12,10 @@ const Navbar = () => {
     <div className="navbar bg-base-300 h-6">
       <Logout />
       <div className="flex-1">
+        <img
+          src={devlogo}
+          className="w-8 h-24 mix-blend-multiply object-cover"
+        />
         <Link to="/" className="btn btn-ghost text-xl">
           Dev Tinder
         </Link>

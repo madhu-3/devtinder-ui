@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUserFeed } from "../../slice/feedSlice";
 import UserCard from "../Common/UserCard";
 import nofeed from "../../assets/nofeed.webp";
+
 const Feed = () => {
   const dispatch = useDispatch();
   const userFeed = useSelector((state) => state.feed.userFeed);
@@ -52,11 +53,15 @@ const Feed = () => {
   }
   return (
     userFeed && (
-      <div className="flex items-center my-10 flex-col gap-y-10">
-        {userFeed.map((user) => {
-          return <UserCard user={user} handleFeedRequest={handleFeedRequest} />;
-        })}
-      </div>
+      <>
+        <div className="flex items-center my-10 flex-col gap-y-10">
+          {userFeed.map((user) => {
+            return (
+              <UserCard user={user} handleFeedRequest={handleFeedRequest} />
+            );
+          })}
+        </div>
+      </>
     )
   );
 };

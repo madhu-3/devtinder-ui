@@ -11,7 +11,7 @@ const UserCard = ({
   const { _id, firstName, lastName, age, about, gender, photoUrl } = user;
   console.log("preview", preview);
   return (
-    <div className="card bg-base-300 w-96 h-1/3 shadow-xl">
+    <div className="card bg-base-300 w-96 h-1/3 shadow-xl overflow-hidden">
       <figure>
         <img
           src={
@@ -22,6 +22,7 @@ const UserCard = ({
               : defaultImg
           }
           alt="feed user photo"
+          className="w-full h-72 object-cover"
         />
       </figure>
       <div className="card-body">

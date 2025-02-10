@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(9, 121, 105, 0.3) 0%, rgba(0, 0, 0, 0.7) 70%);
+    filter: blur(100px);
+  }
+  @keyframes matrix {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 1;
+    }
+  }
+  
+  .animate-matrix {
+    animation: matrix 5s linear infinite;
+  }
