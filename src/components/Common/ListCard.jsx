@@ -39,7 +39,12 @@ const ListCard = ({
             <button className="btn btn-primary hidden sm:block">Message</button>
           </Link>
           <div className="sm:hidden text-secondary">
-            <FontAwesomeIcon icon={faMessage} size="xl" />
+            <Link
+              to={`/chat/${_id}`}
+              state={{ photoUrl: photoUrl, firstName, lastName }}
+            >
+              <FontAwesomeIcon icon={faMessage} size="xl" />
+            </Link>
           </div>
         </div>
       ) : (

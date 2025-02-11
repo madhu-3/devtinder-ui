@@ -34,6 +34,9 @@ const Chat = () => {
       return;
     }
     const socket = establishSocketConnection();
+    socket.on("connect_error", (err) => {
+      console.error(err.message);
+    });
     socket.emit("joinChat", { fromUserId: userData._id, toUserId: targetId });
     socket.on("messageReceived", ({ firstName, lastName, text, createdAt }) => {
       const senderInfo = {
