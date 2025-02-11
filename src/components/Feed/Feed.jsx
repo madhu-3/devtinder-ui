@@ -30,7 +30,6 @@ const Feed = () => {
         {},
         { withCredentials: true }
       );
-      console.log(res);
       fetchFeed();
     } catch (err) {
       console.log(err);
@@ -57,7 +56,11 @@ const Feed = () => {
         <div className="flex items-center my-10 flex-col gap-y-10">
           {userFeed.map((user) => {
             return (
-              <UserCard user={user} handleFeedRequest={handleFeedRequest} />
+              <UserCard
+                key={user?._id}
+                user={user}
+                handleFeedRequest={handleFeedRequest}
+              />
             );
           })}
         </div>

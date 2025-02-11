@@ -40,7 +40,6 @@ const Signup = () => {
   });
 
   const saveProfile = async (values) => {
-    console.log(values);
     try {
       const res = await axios.post(`${BASE_URL}/signup`, values, {
         withCredentials: true,

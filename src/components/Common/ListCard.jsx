@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { BASE_URL } from "../../constants/constants";
 import defaultImg from "../../assets/defaultImg.jpeg";
+import { Link } from "react-router-dom";
 
 const ListCard = ({
   user,
@@ -16,7 +17,7 @@ const ListCard = ({
   requestId,
   isConnection = false,
 }) => {
-  const { firstName, lastName, age, about, gender, photoUrl } = user;
+  const { _id, firstName, lastName, age, about, gender, photoUrl } = user;
   return (
     <div className="w-full lg:w-3/4 bg-base-300 shadow-xl rounded-lg flex justify-between p-2 gap-x-4 items-center">
       <img
@@ -31,9 +32,12 @@ const ListCard = ({
       </div>
       {isConnection ? (
         <div>
-          <button className="btn btn-primary hidden sm:block" disabled>
-            Message
-          </button>
+          <Link
+            to={`/chat/${_id}`}
+            state={{ photoUrl: photoUrl, firstName, lastName }}
+          >
+            <button className="btn btn-primary hidden sm:block">Message</button>
+          </Link>
           <div className="sm:hidden text-secondary">
             <FontAwesomeIcon icon={faMessage} size="xl" />
           </div>

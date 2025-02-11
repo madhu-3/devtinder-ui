@@ -9,7 +9,6 @@ const UserCard = ({
   isProfileView = false,
 }) => {
   const { _id, firstName, lastName, age, about, gender, photoUrl } = user;
-  console.log("preview", preview);
   return (
     <div className="card bg-base-300 w-96 h-1/3 shadow-xl overflow-hidden">
       <figure>
