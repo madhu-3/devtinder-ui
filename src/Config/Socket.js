@@ -16,10 +16,20 @@ const getCookie = () => {
 
 export const establishSocketConnection = () => {
   const tokenVal = getCookie();
-  return io(BASE_URL, {
-    withCredentials: true,
-    auth: {
-      token: tokenVal,
-    },
-  });
+  if (location.hostname === "localhost") {
+    return io(BASE_URL, {
+      withCredentials: true,
+      auth: {
+        token: tokenVal,
+      },
+    });
+  } else {
+    return io("/", {
+      path: "/api/socket.io",
+      withCredentials: true,
+      auth: {
+        token: tokenVal,
+      },
+    });
+  }
 };

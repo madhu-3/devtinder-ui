@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { establishSocketConnection } from "../../Config/Socket";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -9,6 +9,7 @@ import defaultImg from "../../assets/defaultImg.jpeg";
 const Chat = () => {
   const { targetId } = useParams();
   const { state } = useLocation();
+  const navigate = useNavigate();
   const userData = useSelector((store) => store.user.userData);
   const [messageStream, setMessageStream] = useState([]);
   const [message, setMessage] = useState("");
@@ -74,7 +75,12 @@ const Chat = () => {
   return (
     <div className="relative h-full p-2">
       <div className="flex items-center gap-4">
-        <div>Back</div>
+        <button
+          onClick={() => navigate(-1)}
+          className="p-2 bg-blue-500 text-white rounded"
+        >
+          Back
+        </button>
         <div className="chat-image avatar">
           <div className="w-10 rounded-full">
             <img
