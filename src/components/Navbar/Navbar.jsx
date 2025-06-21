@@ -37,6 +37,11 @@ const Navbar = () => {
                       ? BASE_URL + userData.photoUrl
                       : defaultImg
                   }
+                  onError={(e) => {
+                    if (e.target.src !== "/images/fallback.png") {
+                      e.target.src = defaultImg;
+                    }
+                  }}
                 />
               </div>
             </div>

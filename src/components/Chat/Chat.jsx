@@ -86,6 +86,11 @@ const Chat = () => {
             <img
               alt="Tailwind CSS chat bubble component"
               src={state?.photoUrl ? BASE_URL + state?.photoUrl : defaultImg}
+              onError={(e) => {
+                if (e.target.src !== "/images/fallback.png") {
+                  e.target.src = defaultImg;
+                }
+              }}
             />
           </div>
         </div>

@@ -21,6 +21,11 @@ const UserCard = ({
               : defaultImg
           }
           alt="feed user photo"
+          onError={(e) => {
+            if (e.target.src !== "/images/fallback.png") {
+              e.target.src = defaultImg;
+            }
+          }}
           className="w-full h-72 object-cover"
         />
       </figure>

@@ -23,6 +23,11 @@ const ListCard = ({
       <img
         className="w-20 h-20 rounded-full"
         src={photoUrl ? BASE_URL + photoUrl : defaultImg}
+        onError={(e) => {
+          if (e.target.src !== "/images/fallback.png") {
+            e.target.src = defaultImg;
+          }
+        }}
         alt="user badge photo"
       />
       <div className="grow">
