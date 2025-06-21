@@ -48,6 +48,6 @@ This is the **Frontend UI** built with **React**, powered by **Vite** for superf
 ### 📦 Clone the Repo
 
 ```bash
-git clone https://github.com/yourusername/dev-tinder-frontend.git
-cd dev-tinder-frontend
+git clone https://github.com/madhu-3/devtinder-ui.git
+cd devtinder-ui
 ```
